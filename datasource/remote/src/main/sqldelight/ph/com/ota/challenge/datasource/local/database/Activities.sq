@@ -1,0 +1,37 @@
+--
+-- Activities
+--
+-- Usable by: Activities
+-- Object Key: Surrogate (id)
+-- Member Type: Table
+-- Usage: Look-up/Reference
+--
+CREATE TABLE Activities (
+  id TEXT NOT NULL,
+  type TEXT NOT NULL,
+  title TEXT NOT NULL,
+  description TEXT NOT NULL,
+  state TEXT NOT NULL,
+  activeIcon TEXT NOT NULL,
+  inactiveIcon TEXT NOT NULL,
+  PRIMARY KEY (id)
+);
+
+--
+-- ActivityIndices
+--
+-- Usable by: Activities
+-- Member Type: Index
+-- Usage: Optimization
+--
+CREATE INDEX ActivityIndices ON Activities(id);
+
+upsert:
+INSERT INTO Activities
+VALUES ?
+ON CONFLICT(id) DO
+UPDATE SET type=excluded.type, title=excluded.title, description=excluded.description, state=excluded.state, activeIcon=excluded.activeIcon, inactiveIcon=excluded.inactiveIcon;
+
+selectAll:
+SELECT * FROM Activities;
+

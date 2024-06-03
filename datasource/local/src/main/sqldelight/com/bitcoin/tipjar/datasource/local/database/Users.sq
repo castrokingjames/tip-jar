@@ -1,0 +1,27 @@
+--
+-- Users
+--
+-- Usable by: Users
+-- Object Key: Surrogate (id)
+-- Member Type: Table
+-- Usage: Look-up/Reference
+--
+CREATE TABLE Users (
+  id INTEGER NOT NULL,
+  firstName Text NOT NULL,
+  lastName Text NOT NULL,
+  alias Text NOT NULL,
+  title Text NOT NULL,
+  email Text NOT NULL,
+  imageUrl Text NOT NULL,
+  PRIMARY KEY (id)
+);
+
+--
+-- UserIndices
+--
+-- Usable by: Users
+-- Member Type: Index
+-- Usage: Optimization
+--
+CREATE INDEX UserIndices ON Users(id);
