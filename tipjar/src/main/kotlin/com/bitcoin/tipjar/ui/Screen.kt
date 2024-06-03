@@ -7,12 +7,7 @@ const val SCREEN_ID = "screen_id"
 
 sealed class Screen(val route: String) {
 
-  data object DetailScreen : Screen("screen_id/{$SCREEN_ID}") {
+  data object HomeScreen : Screen("home")
 
-    fun withId(screenId: String): String {
-      return route.replace("{$SCREEN_ID}", screenId)
-    }
-  }
-
-  data object SimpleScreen : Screen("simple")
+  data object HistoryScreen : Screen("history")
 }

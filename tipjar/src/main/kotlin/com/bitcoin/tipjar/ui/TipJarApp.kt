@@ -16,8 +16,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.bitcoin.tipjar.feature.history.HistoryScreen
+import com.bitcoin.tipjar.feature.home.HomeScreen
 import com.bitcoin.tipjar.ui.compose.component.Background
-import com.bitcoin.tipjar.ui.screen.SampleScreen
 
 private const val NAVIGATION_ANIM_DURATION = 300
 private const val FADE_IN_ANIM_DURATION = 400
@@ -60,21 +61,21 @@ fun TipJarApp() {
   Background {
     NavHost(
       navController = navController,
-      startDestination = Screen.SimpleScreen.route,
+      startDestination = Screen.HomeScreen.route,
     ) {
-      /** Simple Screen */
+      /** Home Screen */
       composable(
-        route = Screen.SimpleScreen.route,
+        route = Screen.HomeScreen.route,
         enterTransition = { fadeIn(animationSpec = tween(FADE_IN_ANIM_DURATION)) },
         exitTransition = {
-          if (initialState.destination.route == Screen.DetailScreen.route) {
+          if (initialState.destination.route == Screen.HistoryScreen.route) {
             exitTransition()
           } else {
             fadeOut(animationSpec = tween(FADE_IN_ANIM_DURATION))
           }
         },
         popEnterTransition = {
-          if (targetState.destination.route == Screen.DetailScreen.route) {
+          if (targetState.destination.route == Screen.HistoryScreen.route) {
             popEnterTransition()
           } else {
             fadeIn(animationSpec = tween(FADE_IN_ANIM_DURATION))
@@ -82,7 +83,21 @@ fun TipJarApp() {
         },
         popExitTransition = { fadeOut(animationSpec = tween(FADE_IN_ANIM_DURATION)) },
       ) {
-        SampleScreen()
+        HomeScreen {
+          navController.navigate(Screen.HistoryScreen.route)
+        }
+      }
+      /** History Screen */
+      composable(
+        route = Screen.HistoryScreen.route,
+        enterTransition = { enterTransition() },
+        exitTransition = { exitTransition() },
+        popEnterTransition = { popEnterTransition() },
+        popExitTransition = { popExitTransition() },
+      ) {
+        HistoryScreen {
+          navController.navigateUp()
+        }
       }
     }
   }

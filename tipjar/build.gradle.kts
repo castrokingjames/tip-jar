@@ -15,7 +15,7 @@ android {
     minSdk = 24
     targetSdk = 34
     versionCode = 2
-    versionName = "1.1"
+    versionName = "1.0"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     vectorDrawables {
@@ -43,11 +43,8 @@ android {
   }
 
   buildTypes {
-    val baseUrl: String = properties["BASE_URL"]?.toString() ?: "\"https://raw.githubusercontent.com/castrokingjames/api/main/\""
-
     debug {
       signingConfig = signingConfigs["debug"]
-      buildConfigField("String", "BASE_URL", baseUrl)
       proguardFiles(
         getDefaultProguardFile("proguard-android-optimize.txt"),
         "proguard-rules.pro",
@@ -58,7 +55,6 @@ android {
       signingConfig = signingConfigs.findByName("release") ?: signingConfigs["debug"]
       isShrinkResources = true
       isMinifyEnabled = true
-      buildConfigField("String", "BASE_URL", baseUrl)
       proguardFiles(
         getDefaultProguardFile("proguard-android-optimize.txt"),
         "proguard-rules.pro",
@@ -102,7 +98,9 @@ dependencies {
   implementation(projects.domain)
   implementation(projects.data)
   implementation(projects.datasource.local)
-  implementation(projects.datasource.remote)
+
+  implementation(projects.feature.home)
+  implementation(projects.feature.history)
 
   implementation(libs.dagger)
   kapt(libs.dagger.compiler)

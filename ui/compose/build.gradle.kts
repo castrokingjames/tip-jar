@@ -35,7 +35,7 @@ dependencies {
   api(libs.compose.ui.graphics)
   api(libs.compose.ui.tooling)
   api(libs.compose.ui.tooling.preview)
-  api(libs.glide.compose)
+  api(libs.compose.coil)
 
   api(libs.mavericks)
   api(libs.mavericks.compose)

@@ -1,0 +1,31 @@
+--
+-- UserCategories
+--
+-- Usable by: TipJar
+-- Object Key: Surrogate (id)
+-- Member Type: Table
+-- Usage: Pivot/Association/Match
+--
+CREATE TABLE ReceiptImage (
+  id INTEGER NOT NULL,
+  path TEXT NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (id) REFERENCES Receipts(id) ON DELETE CASCADE
+);
+
+--
+-- ReceiptImageIndices
+--
+-- Usable by: TipJar
+-- Member Type: Index
+-- Usage: Optimization
+--
+CREATE INDEX ReceiptImageIndices ON ReceiptImage(id);
+
+upsert:
+INSERT OR REPLACE INTO ReceiptImage VALUES ?;
+
+selectByReceiptId:
+SELECT ReceiptImage.* FROM ReceiptImage
+WHERE ReceiptImage.id = :receiptId;
+

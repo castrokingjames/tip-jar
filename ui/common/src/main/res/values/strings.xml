@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TipJar</string>
+    <string name="saved_payments">Saved Payments</string>
+    <string name="tip_x">Tip: $%.2f</string>
+    <string name="total_tip">Total Tip</string>
+    <string name="per_person">Per Person</string>
+    <string name="percent_tip">% Tip</string>
+    <string name="how_many_people_">How many people?</string>
+    <string name="enter_amount">Enter amount</string>
+    <string name="save_payment">Save payment</string>
+    <string name="take_photo_of_receipt">Take photo of receipt</string>
+    <string name="permission_granted">Permission Granted</string>
+    <string name="permission_denied">Permission Denied</string>
 </resources>

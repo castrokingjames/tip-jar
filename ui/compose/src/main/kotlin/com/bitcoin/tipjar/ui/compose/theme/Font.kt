@@ -11,7 +11,7 @@ import com.bitcoin.tipjar.ui.compose.R
 
 object Font {
 
-  val robotoRegular = FontFamily(
+  val roboto = FontFamily(
     Font(
       R.font.roboto_regular,
       style = FontStyle.Normal,
@@ -19,9 +19,9 @@ object Font {
     ),
 
     Font(
-      R.font.roboto_regular,
+      R.font.roboto_medium,
       style = FontStyle.Normal,
-      weight = FontWeight.W500,
+      weight = FontWeight.Medium,
     ),
   )
 }

@@ -23,7 +23,6 @@ dependencies {
   implementation(projects.model)
   implementation(projects.domain)
   implementation(projects.datasource.local)
-  implementation(projects.datasource.remote)
   implementation(projects.di.annotation)
 
   implementation(libs.kotlin.stdlib)
